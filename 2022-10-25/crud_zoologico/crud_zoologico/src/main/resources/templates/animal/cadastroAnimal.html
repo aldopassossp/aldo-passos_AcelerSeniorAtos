@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Zoológico Atos</title>
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+</head>
+
+<body>
+
+	<h3>Cadastro de Animais</h3>
+	<a href="/" class="waves.effect waves-light btn"><i
+		class="material-icons left">home</i>Menu Principal</a>
+	<a href="/cadastrarAnimal" class="waves.effect waves-light btn"><i
+		class="material-icons left">person_add</i>Cadastrar Animal</a>
+	<a href="/listarAnimal" class="waves.effect waves-light btn"><i
+		class="material-icons left">format_list_bulleted</i>Listar Animais</a>
+
+
+	<form method="post" class="container">
+		Nome Animal:<input type="text" value="" name="nomeAnimal"
+			required="required" /> Especie:<input type="text" value=""
+			name="especie" required="required" /> Raça:<input
+			type="text" value="" name="raca" required="required" />
+			<input type="date" value="" name="dataNascimento" required="required"/>
+			Jaula
+			<select>
+				<option th:each="jaula : ${jaulas}"
+				th:text="${jaula.numeroJaula}" th:value="${jaula.idJaula}"></option>
+		</select> 
+
+		<button type="submit" class="waves.effect waves-light btn">Salvar</button>
+	</form>
+
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+</html>

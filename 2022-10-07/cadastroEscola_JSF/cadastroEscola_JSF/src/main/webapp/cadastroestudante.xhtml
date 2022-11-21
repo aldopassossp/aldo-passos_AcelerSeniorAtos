@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Cadastro de Estudantes</title>
+</h:head>
+<h:body>
+	<h1>Cadastro de Estudantes</h1>
+	
+				<h:form>
+				<h:outputLabel value ="Nome: "/>
+				<h:inputText id="campoNome" value="#{estudanteBean.estudante.nome}"/>
+				<br/>
+				<h:outputLabel value ="CPF: "/>
+				<h:inputText id="campoCpf" value="#{estudanteBean.estudante.cpf}"/>
+				<br/>
+				<h:outputLabel value ="Turma: "/>
+				<h:inputText id="campoTurma" value="#{estudanteBean.estudante.turma}"/>
+				<br/>
+				<h:outputLabel value ="Media: "/>
+				<h:inputText id="campoMedia" value="#{estudanteBean.estudante.media}"/>
+				<br/>
+				<h:outputLabel value ="Estado: "/>
+				<h:inputText id="campoEstado" value="#{estudanteBean.endereco.estado}"/>
+				<br/>
+				<h:outputLabel value ="Cidade: "/>
+				<h:inputText id="campoCidade" value="#{estudanteBean.endereco.cidade}"/>
+				<br/>
+				<h:outputLabel value ="Rua: "/>
+				<h:inputText id="campoRua" value="#{estudanteBean.endereco.rua}"/>
+				<br/>
+				
+				<h:commandButton value="Enviar" action="#{estudanteBean.salvarEstudante}"/>
+			</h:form>
+			
+			
+			<br/>
+			<br/>
+			
+		<h:dataTable value="#{estudanteBean.estudantes}" var="estItem" border="2" id="tabelaEstudantes">
+			<h:column>
+				<f:facet name="header">Estudante</f:facet>
+				#{estItem.nome}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Cpf</f:facet>
+				#{estItem.cpf}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Estado</f:facet>
+				#{estItem.endereco.estado}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Cidade</f:facet>
+				#{estItem.endereco.cidade}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Rua</f:facet>
+				#{estItem.endereco.rua}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Turma</f:facet>
+				#{estItem.turma}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Média</f:facet>
+				#{estItem.media}
+			</h:column>
+		
+		</h:dataTable>
+</h:body>
+</html>

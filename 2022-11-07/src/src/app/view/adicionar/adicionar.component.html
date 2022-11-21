@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <mat-icon fontIcon="home"></mat-icon>
+      <span>Cadastro de Pessoas</span>
+    <span class="example-spacer"></span>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-card>
+    <form [formGroup]="form">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Nome" formControlName="nome">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Idade" formControlName="idade">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Profissão" formControlName="profissao">
+      </mat-form-field>
+    </form>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+      <button mat-raised-button (click)="onCancel()">Cancelar</button>
+    </mat-card-actions>
+</mat-card>
+

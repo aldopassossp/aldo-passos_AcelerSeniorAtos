@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cadastro de Estudantes</title>
+</h:head>
+<h:body>
+	<h1>Cadastro de Estudantes</h1>
+
+	<h:form id="form">
+		<h:panelGrid columns="2">
+			<p:outputLabel value="Nome: " />
+			<p:inputText id="campoNome" value="#{estudanteBean.estudante.nome}" />
+
+			<p:outputLabel value="CPF: " />
+			<p:inputText id="campoCpf" value="#{estudanteBean.estudante.cpf}" />
+
+			<p:outputLabel value="Turma: " />
+			<p:inputText id="campoTurma" value="#{estudanteBean.estudante.turma}" />
+
+			<p:outputLabel value="Media: " />
+			<p:inputText id="campoMedia" value="#{estudanteBean.estudante.media}" />
+
+			<p:outputLabel value="Estado: " />
+			<p:inputText id="campoEstado"
+				value="#{estudanteBean.endereco.estado}" />
+
+			<p:outputLabel value="Cidade: " />
+			<p:inputText id="campoCidade"
+				value="#{estudanteBean.endereco.cidade}" />
+
+			<p:outputLabel value="Rua: " />
+			<p:inputText id="campoRua" value="#{estudanteBean.endereco.rua}" />
+
+			<p:commandButton value="Enviar"
+				action="#{estudanteBean.cadastrarEstudante}"
+				update="form formTabela" styleClass="btn" />
+
+
+		</h:panelGrid>
+	</h:form>
+
+
+
+	<h:form id="formTabela">
+		<p:dataTable value="#{estudanteBean.estudantes}" var="estItem"
+			border="2" id="tabelaEstudantes">
+			<p:column>
+				<f:facet name="header">Estudante</f:facet>
+					#{estItem.nome}
+				</p:column>
+			<p:column>
+				<f:facet name="header">Cpf</f:facet>
+					#{estItem.cpf}
+				</p:column>
+			<p:column>
+				<f:facet name="header">Estado</f:facet>
+					#{estItem.endereco.estado}
+				</p:column>
+			<p:column>
+				<f:facet name="header">Cidade</f:facet>
+					#{estItem.endereco.cidade}
+				</p:column>
+
+			<p:column>
+				<f:facet name="header">Rua</f:facet>
+					#{estItem.endereco.rua}
+				</p:column>
+			<p:column>
+				<f:facet name="header">Turma</f:facet>
+					#{estItem.turma}
+				</p:column>
+			<p:column>
+				<f:facet name="header">Média</f:facet>
+					#{estItem.media}
+				</p:column>
+			<p:column>
+				<f:facet name="header">Deletar</f:facet>
+				<h:commandLink id="deletar" value="Deletar"
+					action="#{estudanteBean.excluirEstudante(estudanteItem)}"
+					onclick="return confirm ('Deseja Excluir o Estudante?')">
+
+				</h:commandLink>
+
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandLink id="editar" value="Editar"
+					action="#{estudanteBean.editarEstudante(estudanteItem)}"
+					onclick="return confirm ('Deseja Atualizar o Estudante?')">
+
+				</h:commandLink>
+
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

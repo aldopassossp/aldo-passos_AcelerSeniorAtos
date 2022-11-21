@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Zoológico Atos</title>
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="../materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+<body>
+	<h3>Editar Jaula</h3>
+	<a href="/" class="waves.effect waves-light btn"><i
+		class="material-icons left">home</i>Menu Principal</a>
+	<a href="/cadastrarJaula" class="waves.effect waves-light btn"><i
+		class="material-icons left">person_add</i>Cadastrar Jaula</a>
+	<a href="/listarJaula" class="waves.effect waves-light btn"><i
+		class="material-icons left">format_list_bulleted</i>Listar Jaula</a>
+
+	<div th:each="jaula : ${jaulas}">
+
+		<form class="container" th:action="@{/atualizarJaula}"
+			method="post">
+				
+				<input type="hidden" th:value="${jaula.idJaula}"
+				name="idJaula" />
+						Nome do Zoológico:<input type="text" th:value="${jaula.nomeZoologico}" name="nomeZoologico"
+			required="required" /> Bloco:<input type="text" th:value="${jaula.bloco}"
+			name="bloco" required="required" /> Numero da Jaula:<input
+			type="text" th:value="${jaula.numeroJaula}" name="numeroJaula" required="required" />
+ 			Cuidador
+			<select>
+				<option th:each="cuidador : ${cuidadores}" th:text="${cuidador.nome}" th:value="${cuidador.idCuidador}" ></option>
+			</select> 
+
+			<button type="submit" class="waves.effect waves-light btn">Salvar</button>
+
+		</form>
+
+	</div>
+
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+
+</body>
+</html>
